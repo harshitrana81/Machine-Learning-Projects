@@ -8,7 +8,6 @@ Original file is located at
 """
 import pandas as pd
 import numpy as np
-from sklearn.tree import DecisionTreeRegressor
 
 def analyze_and_forecast():
     df = pd.read_csv('wheat_prices_siyana.csv')
