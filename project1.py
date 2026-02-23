@@ -87,10 +87,7 @@ print("Model and Reference Price saved successfully!")
 model.score(X ,y)
 
 print("Installing dependencies...")
-!pip install streamlit joblib scikit-learn matplotlib -q
-!wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-!dpkg -i cloudflared-linux-amd64.deb -q
-!fuser -k 8501/tcp
+
 with open('app.py', 'w') as f:
     f.write('''
 import joblib
@@ -161,10 +158,7 @@ print("Starting Streamlit...")
 subprocess.Popen(["streamlit", "run", "app.py", "--server.port", "8501", "--server.address", "0.0.0.0"])
 time.sleep(5)
 print("Creating Tunnel... Click the link below when it appears!")
-!cloudflared tunnel --url http://localhost:8501
 
-!wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-!dpkg -i cloudflared-linux-amd64.deb
+
 import os
 os.system("streamlit run app.py &")
-!cloudflared tunnel --url http://localhost:8501
